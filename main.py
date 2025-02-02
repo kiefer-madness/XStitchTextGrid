@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 import matplotlib.pyplot as plt
 
-font_path = "alagard.ttf"
+font_path = ""
 font_size = 32
 font = ImageFont.truetype(font_path, font_size)
 
