@@ -4,22 +4,58 @@ import matplotlib.pyplot as plt
 
 # Dictionary to hold each font's best font_size for pixel grid
 font_sizes = {
-    "alagard": 16,
+    "addstandard.ttf": 9,
+    "alagard.ttf": 16,
+    "alkhemikal.ttf": 16,
+    "birchleaf.ttf": 16,
+    "cavalhatriz.ttf": 16,
+    "cooper.ttf": 16,
+    "cursive.ttf": 17,
+    "daydream.ttf": 10.5,
+    "digicastle.ttf": 18,
+    "digitaldisco.ttf": 16,
+    "enchantedsword.ttf": 16,
+    "finalfantasy.ttf": 8,
+    "fipps.otf": 8,
+    "gothic.ttf": 16,
+    "gothic2.ttf": 16,
+    "grapesoda.ttf": 16,
+    "icepixel.ttf": 20,
+    "kiwisoda.ttf": 16,
+    "kuchibue.ttf": 16,
+    "mario64.ttf": 12,
+    "microserif.ttf": 10,
+    "minecraft.ttf": 8,
+    #"mleitod.ttf": 14,
+    "nokia.ttf": 8,
+    "notepen.ttf": 16,
+    "pixelcowboy.otf": 8,
+    "pixeledenglish.ttf": 16,
+    "pixellove.ttf": 8,
+    #"pixelout.ttf": 28,
+    "pixelpoiiz.ttf": 10,
+    "primusscript.ttf": 10,
+    "runescape.ttf": 16,
+    "typecast.ttf": 16,
+    "typecast-bold.ttf": 16,
+    "typecast-italic.ttf": 16,
+    "veniceclassic.ttf": 19,
+    "verminvibes.ttf": 16,
+    "windows_command_prompt.ttf": 16,
 }
 
-font_name = "alagard"
-font_path = f"fonts/{font_name}.ttf"
+font_name = "typecast-italic.ttf"
+font_path = f"fonts/{font_name}"
 font_size = font_sizes[font_name]
 font = ImageFont.truetype(font_path, font_size)
-font_line_spacing = 25
+font_line_spacing = 50
 
 # Text to render
-text = """I am drunk
-at 11:31am"""
+text = """hey lil mama"""
 
 # Canvas size
-img_width = 120
-img_height = 120
+img_width = 100
+img_height = 100
 
 # Create a blank image large enough to fit the text
 img = Image.new('RGBA', (img_width, img_height), color=(255, 255, 255, 255))  # White background with alpha
@@ -29,17 +65,14 @@ draw = ImageDraw.Draw(img)
 width, height = img.size
 
 # Find the center pixel
-center_x = width // 2
-center_y = height // 2
+center_x, center_y = width // 2, height // 2
 
-# Draw transparent red crosshairs **first**
+# Draw transparent red crosshairs
 red_transparent = (255, 0, 0, 128)  # Red with 50% transparency
 
-# Draw vertical line
+# Draw vertical and horizontal lines using pixel-perfect positions
 for y in range(height):
     img.putpixel((center_x, y), red_transparent)
-
-# Draw horizontal line
 for x in range(width):
     img.putpixel((x, center_y), red_transparent)
 
@@ -57,7 +90,7 @@ y_start = (img_height - total_text_height) // 2
 min_x = img_width
 max_x = 0
 
-# Now draw text **on top of** the red crosshair
+# Now draw text
 for i, line in enumerate(lines):
     bbox = font.getbbox(line)
     text_width = bbox[2] - bbox[0]
